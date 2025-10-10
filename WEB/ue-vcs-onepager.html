@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UE Version Control - Component Library</title>
+    <style>
+        /* ============================================
+           COLOR PALETTE (Extracted from images)
+           ============================================ */
+        :root {
+            /* Primary Colors */
+            --color-cyan: #00D9FF;
+            --color-cyan-bright: #4DFFFF;
+            --color-orange: #FF6B35;
+            --color-orange-bright: #FF8A5C;
+            
+            /* Background Colors */
+            --color-bg-dark: #0A1628;
+            --color-bg-darker: #050B14;
+            --color-bg-card: #0F1E32;
+            --color-bg-elevated: #1A2942;
+            
+            /* Accent Colors */
+            --color-teal: #1A8B9D;
+            --color-teal-light: #2AABB8;
+            
+            /* Text Colors */
+            --color-text-primary: #FFFFFF;
+            --color-text-secondary: #B8C5D6;
+            --color-text-muted: #6B7C93;
+            
+            /* Utility */
+            --color-border: #1E3A5F;
+            --color-glow-cyan: rgba(0, 217, 255, 0.3);
+            --color-glow-orange: rgba(255, 107, 53, 0.3);
+            
+            /* Spacing Scale */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+            
+            /* Border Radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            
+            /* Transitions */
+            --transition-fast: 150ms ease;
+            --transition-base: 250ms ease;
+            --transition-slow: 350ms ease;
+        }
+
+        /* ============================================
+           RESET & BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--color-bg-darker);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           TYPOGRAPHY COMPONENTS
+           ============================================ */
+        
+        /* Heading 1 - Hero Title */
+        .heading-hero {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--color-cyan-bright), var(--color-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--space-md);
+        }
+
+        /* Heading 2 - Section Title */
+        .heading-section {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-lg);
+            color: var(--color-text-primary);
+        }
+
+        /* Heading 3 - Subsection */
+        .heading-subsection {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: var(--space-md);
+            color: var(--color-cyan);
+        }
+
+        /* Heading 4 - Card Title */
+        .heading-card {
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: var(--space-sm);
+            color: var(--color-text-primary);
+        }
+
+        /* Body Text - Large */
+        .text-large {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+
+        /* Body Text - Base */
+        .text-base {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+
+        /* Body Text - Small */
+        .text-small {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: var(--color-text-muted);
+        }
+
+        /* Accent Text */
+        .text-accent {
+            color: var(--color-orange);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           BUTTON COMPONENTS
+           ============================================ */
+        
+        .btn {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-lg);
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Primary Button */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-cyan), var(--color-teal));
+            color: var(--color-bg-darker);
+            box-shadow: 0 4px 20px var(--color-glow-cyan);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px var(--color-glow-cyan);
+        }
+
+        /* Secondary Button */
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-cyan);
+            border: 2px solid var(--color-cyan);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-cyan);
+            color: var(--color-bg-darker);
+            transform: translateY(-2px);
+        }
+
+        /* Accent Button */
+        .btn-accent {
+            background: linear-gradient(135deg, var(--color-orange), var(--color-orange-bright));
+            color: var(--color-text-primary);
+            box-shadow: 0 4px 20px var(--color-glow-orange);
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px var(--color-glow-orange);
+        }
+
+        /* Ghost Button */
+        .btn-ghost {
+            background: transparent;
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-ghost:hover {
+            background: var(--color-bg-card);
+            border-color: var(--color-cyan);
+            color: var(--color-cyan);
+        }
+
+        /* Button Sizes */
+        .btn-sm {
+            padding: var(--space-xs) var(--space-md);
+            font-size: 0.875rem;
+        }
+
+        .btn-lg {
+            padding: var(--space-md) var(--space-xl);
+            font-size: 1.125rem;
+        }
+
+        /* ============================================
+           CONTAINER & LAYOUT COMPONENTS
+           ============================================ */
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        .container-narrow {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        .container-wide {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        /* Section Component */
+        .section {
+            padding: var(--space-3xl) 0;
+            position: relative;
+        }
+
+        .section-sm {
+            padding: var(--space-xl) 0;
+        }
+
+        .section-lg {
+            padding: 6rem 0;
+        }
+
+        /* Background Variants */
+        .bg-dark {
+            background: var(--color-bg-darker);
+        }
+
+        .bg-elevated {
+            background: var(--color-bg-dark);
+        }
+
+        .bg-card {
+            background: var(--color-bg-card);
+        }
+
+        /* Grid System */
+        .grid {
+            display: grid;
+            gap: var(--space-lg);
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        /* Flex Utilities */
+        .flex {
+            display: flex;
+        }
+
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gap-sm { gap: var(--space-sm); }
+        .gap-md { gap: var(--space-md); }
+        .gap-lg { gap: var(--space-lg); }
+
+        /* Text Alignment */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+
+        /* ============================================
+           CARD COMPONENTS
+           ============================================ */
+        
+        .card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            border: 1px solid var(--color-border);
+            transition: all var(--transition-base);
+        }
+
+        .card:hover {
+            border-color: var(--color-cyan);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 217, 255, 0.15);
+        }
+
+        .card-feature {
+            background: linear-gradient(135deg, var(--color-bg-card), var(--color-bg-elevated));
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-cyan), var(--color-orange));
+        }
+
+        /* ============================================
+           ICON & BADGE COMPONENTS
+           ============================================ */
+        
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--color-cyan), var(--color-teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: var(--space-md);
+            box-shadow: 0 4px 20px var(--color-glow-cyan);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: var(--space-xs) var(--space-sm);
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-primary {
+            background: var(--color-cyan);
+            color: var(--color-bg-darker);
+        }
+
+        .badge-accent {
+            background: var(--color-orange);
+            color: var(--color-text-primary);
+        }
+
+        .badge-outline {
+            background: transparent;
+            border: 1px solid var(--color-cyan);
+            color: var(--color-cyan);
+        }
+
+        /* ============================================
+           CIRCUIT BACKGROUND EFFECT
+           ============================================ */
+        
+        .circuit-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image: 
+                linear-gradient(var(--color-cyan) 1px, transparent 1px),
+                linear-gradient(90deg, var(--color-cyan) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .glow-orb-cyan {
+            background: var(--color-cyan);
+            width: 400px;
+            height: 400px;
+        }
+
+        .glow-orb-orange {
+            background: var(--color-orange);
+            width: 300px;
+            height: 300px;
+        }
+
+        /* ============================================
+           COMPONENT SHOWCASE STYLES
+           ============================================ */
+        
+        .showcase {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .showcase-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-cyan);
+            margin-bottom: var(--space-md);
+            font-family: 'Courier New', monospace;
+        }
+
+        .showcase-grid {
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        .color-swatch {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .color-box {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-border);
+        }
+
+        .color-info {
+            flex: 1;
+        }
+
+        .color-name {
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .color-code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        /* ============================================
+           ACTUAL ONE-PAGER CONTENT STARTS HERE
+           ============================================ */
+
+        /* Hero Section Specific */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .glow-orb-cyan {
+            top: -200px;
+            right: -200px;
+        }
+
+        .hero .glow-orb-orange {
+            bottom: -150px;
+            left: -150px;
+        }
+
+        /* How It Works Steps */
+        .steps {
+            counter-reset: step;
+        }
+
+        .step {
+            position: relative;
+            padding-left: var(--space-xl);
+        }
+
+        .step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--color-cyan), var(--color-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--color-bg-darker);
+        }
+
+        /* Benefits Grid Icons */
+        .benefit-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+        }
+
+        /* CTA Section */
+        .cta-box {
+            background: linear-gradient(135deg, var(--color-bg-card), var(--color-bg-elevated));
+            border: 2px solid var(--color-cyan);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--color-glow-cyan) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--color-border);
+            padding: var(--space-xl) 0;
+            text-align: center;
+        }
+
+        /* Form Input */
+        .input {
+            width: 100%;
+            padding: var(--space-sm) var(--space-md);
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            color: var(--color-text-primary);
+            font-size: 1rem;
+            transition: all var(--transition-base);
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: var(--color-cyan);
+            box-shadow: 0 0 0 3px var(--color-glow-cyan);
+        }
+
+        .input-group {
+            display: flex;
+            gap: var(--space-sm);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            .section {
+                padding: var(--space-xl) 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         COMPONENT LIBRARY SHOWCASE
+         ============================================ -->
+    
+    <section class="section bg-elevated">
+        <div class="container">
+            <h1 class="heading-hero text-center">Component Library</h1>
+            <p class="text-large text-center" style="margin-bottom: var(--space-2xl);">
+                Design system and reusable components for building one-pagers
+            </p>
+
+            <!-- Color Palette -->
+            <div class="showcase">
+                <h3 class="showcase-title">// Color Palette</h3>
+                <div class="grid grid-2">
+                    <div class="color-swatch">
+                        <div class="color-box" style="background: var(--color-cyan);"></div>
+                        <div class="color-info">
+                            <div class="color-name">Cyan Primary</div>
+                            <div class="color-code">--color-cyan: #00D9FF</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="color-box" style="background: var(--color-orange);"></div>
+                        <div class="color-info">
+                            <div class="color-name">Orange Accent</div>
+                            <div class="color-code">--color-orange: #FF6B35</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="color-box" style="background: var(--color-bg-darker);"></div>
+                        <div class="color-info">
+                            <div class="color-name">Background Dark</div>
+                            <div class="color-code">--color-bg-darker: #050B14</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="color-box" style="background: var(--color-bg-card);"></div>
+                        <div class="color-info">
+                            <div class="color-name">Card Background</div>
+                            <div class="color-code">--color-bg-card: #0F1E32</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typography -->
+            <div class="showcase">
+                <h3 class="showcase-title">// Typography Components</h3>
+                <div class="showcase-grid">
+                    <div>
+                        <h1 class="heading-hero">Hero Heading (.heading-hero)</h1>
+                    </div>
+                    <div>
+                        <h2 class="heading-section">Section Heading (.heading-section)</h2>
+                    </div>
+                    <div>
+                        <h3 class="heading-subsection">Subsection Heading (.heading-subsection)</h3>
+                    </div>
+                    <div>
+                        <h4 class="heading-card">Card Heading (.heading-card)</h4>
+                    </div>
+                    <div>
+                        <p class="text-large">Large body text (.text-large) - Used for hero subtitles and important descriptions</p>
+                    </div>
+                    <div>
+                        <p class="text-base">Base body text (.text-base) - Standard paragraph text for content</p>
+                    </div>
+                    <div>
+                        <p class="text-small">Small text (.text-small) - Used for captions and metadata</p>
+                    </div>
+                    <div>
+                        <p class="text-base">Text with <span class="text-accent">accent color</span> (.text-accent)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="showcase">
+                <h3 class="showcase-title">// Button Components</h3>
+                <div class="flex-center gap-md" style="flex-wrap: wrap;">
+                    <button class="btn btn-primary">Primary Button</button>
+                    <button class="btn btn-secondary">Secondary Button</button>
+                    <button class="btn btn-accent">Accent Button</button>
+                    <button class="btn btn-ghost">Ghost Button</button>
+                </div>
+                <div class="flex-center gap-md" style="flex-wrap: wrap; margin-top: var(--space-md);">
+                    <button class="btn btn-primary btn-sm">Small Primary</button>
+                    <button class="btn btn-primary">Regular Primary</button>
+                    <button class="btn btn-primary btn-lg">Large Primary</button>
+                </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="showcase">
+                <h3 class="showcase-title">// Card Components</h3>
+                <div class="grid grid-2">
+                    <div class="card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="heading-card">Built for Solo Devs</h3>
+                    <p class="text-base">No enterprise overhead. No team coordination complexity. Just you, your project, and version control that adapts to your workflow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="beta" class="section bg-dark">
+        <div class="container-narrow">
+            <div class="cta-box">
+                <div class="cta-content">
+                    <h2 class="heading-section">Join the First 50 Beta Testers</h2>
+                    <p class="text-large" style="margin-bottom: var(--space-xl);">
+                        Help shape the future of Unreal Engine version control. Get early access to all features, direct input on development, and free access during beta.
+                    </p>
+                    
+                    <div class="input-group">
+                        <input type="email" class="input" placeholder="your.email@example.com">
+                        <button class="btn btn-accent btn-lg">Get Beta Access</button>
+                    </div>
+
+                    <p class="text-small" style="margin-top: var(--space-md);">
+                        Beta launches end of October 2025 • v1.0 expected Q1-Q2 2026
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Building / About -->
+    <section class="section bg-elevated">
+        <div class="container-narrow text-center">
+            <h2 class="heading-subsection">Built by a Developer Who Got It</h2>
+            <p class="text-base" style="margin-bottom: var(--space-lg);">
+                This tool exists because I got tired of choosing between expensive enterprise solutions and steep technical learning curves. Version control should reduce cognitive load, not add to it.
+            </p>
+            <p class="text-base">
+                Your feedback during beta will directly shape v1.0. In return for helping test and providing testimonials, you'll get early access to all planned features and direct influence on development priorities.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark">
+        <div class="container">
+            <p class="text-small">
+                © 2025 UE Version Control Tool • Beta October 2025 • v1.0 Q1-Q2 2026
+            </p>
+            <p class="text-small" style="margin-top: var(--space-sm);">
+                Built for solo developers and small teams working on Unreal Engine projects
+            </p>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         DOCUMENTATION SECTION
+         ============================================ -->
+    
+    <section class="section" style="background: var(--color-bg-darker); border-top: 2px solid var(--color-border);">
+        <div class="container">
+            <h2 class="heading-section text-center" style="color: var(--color-orange);">Component Usage Guide</h2>
+            
+            <div class="showcase">
+                <h3 class="showcase-title">// Container Classes</h3>
+                <div class="text-base">
+                    <p style="margin-bottom: var(--space-sm);"><strong>.container</strong> - Standard container (max-width: 1200px)</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.container-narrow</strong> - Narrow container (max-width: 800px) - for focused content</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.container-wide</strong> - Wide container (max-width: 1400px)</p>
+                </div>
+            </div>
+
+            <div class="showcase">
+                <h3 class="showcase-title">// Section Classes</h3>
+                <div class="text-base">
+                    <p style="margin-bottom: var(--space-sm);"><strong>.section</strong> - Standard section padding (6rem vertical)</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.section-sm</strong> - Small section padding (3rem vertical)</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.section-lg</strong> - Large section padding (6rem vertical)</p>
+                    <p style="margin-top: var(--space-md);"><em>Combine with background classes:</em></p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.bg-dark</strong> - Dark background (#0A1628)</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.bg-elevated</strong> - Slightly lighter background</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.bg-card</strong> - Card background color</p>
+                </div>
+            </div>
+
+            <div class="showcase">
+                <h3 class="showcase-title">// Grid System</h3>
+                <div class="text-base">
+                    <p style="margin-bottom: var(--space-sm);"><strong>.grid</strong> - Base grid container</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.grid-2</strong> - 2 column responsive grid (min 300px per column)</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.grid-3</strong> - 3 column responsive grid (min 250px per column)</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.grid-4</strong> - 4 column responsive grid (min 200px per column)</p>
+                    <p style="margin-top: var(--space-md); color: var(--color-text-muted);"><em>All grids automatically collapse to single column on mobile</em></p>
+                </div>
+            </div>
+
+            <div class="showcase">
+                <h3 class="showcase-title">// Flexbox Utilities</h3>
+                <div class="text-base">
+                    <p style="margin-bottom: var(--space-sm);"><strong>.flex</strong> - Display flex</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.flex-center</strong> - Center items (justify + align)</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.flex-between</strong> - Space between items</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.flex-col</strong> - Flex direction column</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.gap-sm / .gap-md / .gap-lg</strong> - Add gaps between flex/grid items</p>
+                </div>
+            </div>
+
+            <div class="showcase">
+                <h3 class="showcase-title">// Typography Classes</h3>
+                <div class="text-base">
+                    <p style="margin-bottom: var(--space-sm);"><strong>.heading-hero</strong> - Main hero heading with gradient</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.heading-section</strong> - Section titles</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.heading-subsection</strong> - Subsection titles (cyan color)</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.heading-card</strong> - Card titles</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.text-large</strong> - Large body text (1.25rem)</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.text-base</strong> - Standard body text (1rem)</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.text-small</strong> - Small text (0.875rem)</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.text-accent</strong> - Orange accent color with bold weight</p>
+                    <p style="margin-top: var(--space-md);"><em>Alignment classes:</em></p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.text-center / .text-left / .text-right</strong> - Text alignment</p>
+                </div>
+            </div>
+
+            <div class="showcase">
+                <h3 class="showcase-title">// Button Classes</h3>
+                <div class="text-base">
+                    <p style="margin-bottom: var(--space-sm);"><strong>.btn</strong> - Base button class (required)</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.btn-primary</strong> - Cyan gradient button</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.btn-secondary</strong> - Cyan outline button</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.btn-accent</strong> - Orange gradient button</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.btn-ghost</strong> - Minimal transparent button</p>
+                    <p style="margin-top: var(--space-md);"><em>Size modifiers:</em></p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.btn-sm</strong> - Small button</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.btn-lg</strong> - Large button</p>
+                </div>
+            </div>
+
+            <div class="showcase">
+                <h3 class="showcase-title">// Card Classes</h3>
+                <div class="text-base">
+                    <p style="margin-bottom: var(--space-sm);"><strong>.card</strong> - Standard card with hover effects</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.card-feature</strong> - Feature card with gradient and top border accent</p>
+                </div>
+            </div>
+
+            <div class="showcase">
+                <h3 class="showcase-title">// Special Components</h3>
+                <div class="text-base">
+                    <p style="margin-bottom: var(--space-sm);"><strong>.icon-box</strong> - Icon container with gradient background</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.badge</strong> - Base badge class</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.badge-primary / .badge-accent / .badge-outline</strong> - Badge variants</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.input</strong> - Form input with focus states</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.input-group</strong> - Input + button combo</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.cta-box</strong> - Call-to-action box with pulse animation</p>
+                </div>
+            </div>
+
+            <div class="showcase">
+                <h3 class="showcase-title">// Background Effects</h3>
+                <div class="text-base">
+                    <p style="margin-bottom: var(--space-sm);"><strong>.circuit-bg</strong> - Circuit board pattern overlay</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.glow-orb</strong> - Glowing orb background effect</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>.glow-orb-cyan / .glow-orb-orange</strong> - Color variants</p>
+                    <p style="margin-top: var(--space-md); color: var(--color-text-muted);"><em>Position these absolutely within a relative parent</em></p>
+                </div>
+            </div>
+
+            <div class="showcase">
+                <h3 class="showcase-title">// CSS Variables Reference</h3>
+                <div class="text-base">
+                    <p style="margin-bottom: var(--space-sm);"><strong>Spacing:</strong> --space-xs, --space-sm, --space-md, --space-lg, --space-xl, --space-2xl, --space-3xl</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>Border Radius:</strong> --radius-sm, --radius-md, --radius-lg, --radius-xl</p>
+                    <p style="margin-bottom: var(--space-sm);"><strong>Transitions:</strong> --transition-fast, --transition-base, --transition-slow</p>
+                    <p style="margin-top: var(--space-md); color: var(--color-text-muted);"><em>Use these in your custom styles: padding: var(--space-lg);</em></p>
+                </div>
+            </div>
+
+            <div class="showcase">
+                <h3 class="showcase-title">// Example Usage</h3>
+                <div style="background: var(--color-bg-darker); padding: var(--space-md); border-radius: var(--radius-md); font-family: 'Courier New', monospace; font-size: 0.875rem; color: var(--color-cyan); overflow-x: auto;">
+<pre>&lt;section class="section bg-dark"&gt;
+  &lt;div class="container"&gt;
+    &lt;h2 class="heading-section text-center"&gt;Your Title&lt;/h2&gt;
+    &lt;div class="grid grid-3"&gt;
+      &lt;div class="card"&gt;
+        &lt;h3 class="heading-card"&gt;Feature 1&lt;/h3&gt;
+        &lt;p class="text-base"&gt;Description&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;!-- More cards --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
+                        <h4 class="heading-card">Standard Card (.card)</h4>
+                        <p class="text-base">This is a standard card component with hover effects. It has padding, border, and transforms on hover.</p>
+                    </div>
+                    <div class="card-feature">
+                        <h4 class="heading-card">Feature Card (.card-feature)</h4>
+                        <p class="text-base">Feature card with gradient background and top accent border. Perfect for highlighting key features.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Badges & Icons -->
+            <div class="showcase">
+                <h3 class="showcase-title">// Badges & Icons</h3>
+                <div class="flex-center gap-md" style="margin-bottom: var(--space-md); flex-wrap: wrap;">
+                    <span class="badge badge-primary">Beta</span>
+                    <span class="badge badge-accent">New</span>
+                    <span class="badge badge-outline">Coming Soon</span>
+                </div>
+                <div class="flex-center gap-lg">
+                    <div class="icon-box">⚡</div>
+                    <div class="icon-box">🔒</div>
+                    <div class="icon-box">🎯</div>
+                </div>
+            </div>
+
+            <!-- Layout Grid -->
+            <div class="showcase">
+                <h3 class="showcase-title">// Grid System</h3>
+                <div class="grid grid-3">
+                    <div class="card">Grid Item 1</div>
+                    <div class="card">Grid Item 2</div>
+                    <div class="card">Grid Item 3</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================
+         ACTUAL ONE-PAGER EXAMPLE
+         ============================================ -->
+
+    <!-- Hero Section -->
+    <section class="section hero bg-dark">
+        <div class="circuit-bg"></div>
+        <div class="glow-orb glow-orb-cyan"></div>
+        <div class="glow-orb glow-orb-orange"></div>
+        
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="container-narrow text-center">
+                <span class="badge badge-primary" style="margin-bottom: var(--space-md);">Beta Coming October 2025</span>
+                <h1 class="heading-hero">Version Control That Thinks Like You Do</h1>
+                <p class="text-large" style="margin-bottom: var(--space-xl);">
+                    Stop wrestling with Perforce pricing and Git commands. Your Unreal Engine projects deserve version control that just... works. Automatically.
+                </p>
+                <div class="flex-center gap-md" style="flex-wrap: wrap;">
+                    <a href="#beta" class="btn btn-primary btn-lg">Join Beta Testing</a>
+                    <a href="#how" class="btn btn-secondary btn-lg">See How It Works</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section bg-elevated">
+        <div class="container-narrow">
+            <h2 class="heading-section text-center">The Problem Every Solo Dev Knows</h2>
+            <p class="text-large text-center" style="margin-bottom: var(--space-xl);">
+                You're building something amazing in Unreal Engine, but backing up your work shouldn't require a computer science degree or an enterprise budget. 
+                <span class="text-accent">Pay thousands for Perforce</span>, or <span class="text-accent">battle Git's learning curve</span> while manually tracking every single change.
+            </p>
+            <p class="text-base text-center">
+                Meanwhile, you just want to focus on creating. Not configuring version control systems.
+            </p>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how" class="section bg-dark">
+        <div class="container">
+            <h2 class="heading-section text-center">How It Works</h2>
+            <p class="text-large text-center" style="margin-bottom: var(--space-2xl); max-width: 700px; margin-left: auto; margin-right: auto;">
+                Three steps. Zero learning curve. Complete protection.
+            </p>
+
+            <div class="grid grid-3">
+                <div class="card-feature">
+                    <div class="icon-box">1️⃣</div>
+                    <h3 class="heading-card">Install Plugin</h3>
+                    <p class="text-base">Download from FAB Marketplace and activate. The plugin creates its workspace and initializes your project automatically.</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box">2️⃣</div>
+                    <h3 class="heading-card">Work Normally</h3>
+                    <p class="text-base">Create, edit, delete files like you always do. No manual commits. No terminal commands. The tool tracks everything in real-time.</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box">3️⃣</div>
+                    <h3 class="heading-card">Stay Protected</h3>
+                    <p class="text-base">Automatic backups at your chosen intervals. When something breaks, restore it in seconds. That's it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Benefits -->
+    <section class="section bg-elevated">
+        <div class="container">
+            <h2 class="heading-section text-center">Why This Changes Everything</h2>
+            
+            <div class="grid grid-2" style="margin-top: var(--space-2xl);">
+                <div class="card">
+                    <div class="benefit-icon">🚫</div>
+                    <h3 class="heading-card">No Terminal Required</h3>
+                    <p class="text-base">Forget git commands. Forget manual commits. The tool speaks your language: you make a change, it's tracked. Instantly.</p>
+                </div>
+
+                <div class="card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3 class="heading-card">Real-Time Tracking</h3>
+                    <p class="text-base">Event-driven system subscribes to Unreal Engine's file operations. Every create, modify, or delete is captured automatically.</p>
+                </div>
+
+                <div class="card">
+                    <div class="benefit-icon">⏱️</div>
+                    <h3 class="heading-card">Smart Backup Timing</h3>
+                    <p class="text-base">Configure time-based backups (Pomodoro style) or let it work automatically. Optional restore functionality coming in v1.0.</p>
+                </div>
+
+                <div class="card">
