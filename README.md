@@ -1,2 +1,2 @@
-# edi.github.io
-Static web page repository test.
+# Reporting Tool
+Static web page repository - reporting tool.
