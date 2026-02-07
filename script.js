@@ -1,21 +1,3 @@
-// Hardcoded data for testing
-const weekData = {
-    current: {
-        Mon: 42,
-        Tue: 38,
-        Wed: 45,
-        Thu: 50,
-        Fri: 44
-    },
-    previous: {
-        Mon: 40,
-        Tue: 35,
-        Wed: 42,
-        Thu: 48,
-        Fri: 40
-    }
-};
-
 // Calculate total
 function calculateTotal(data) {
     return Object.values(data).reduce((sum, val) => sum + val, 0);
