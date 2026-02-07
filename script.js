@@ -84,14 +84,12 @@ function renderChart(currentData, previousData) {
                     data: previousValues,
                     borderColor: '#ff9800',
                     backgroundColor: 'rgba(255, 152, 0, 1)',
-                    tension: 0.3
                 },
                 {
                     label: 'Current Week',
                     data: currentValues,
                     borderColor: '#2196f3',
                     backgroundColor: 'rgba(33, 150, 243, 1)',
-                    tension: 0.3
                 }
             ]
         },
