@@ -100,8 +100,11 @@ function renderChart(currentData, previousData) {
 // Button click handler
 function handleUpdateClick() {
     console.log('Update button clicked!');
+
+    // Add timestamp to force fresh fetch
+    const url = `reports/simplified-report-09-10-25.json?t=${Date.now()}`;
     
-    getData('reports/simplified-report-09-10-25.json').then(data => {
+    getData(url).then(data => {
         if (data) {
             renderQuads(data.current);
             renderChart(data.current, data.previous);
