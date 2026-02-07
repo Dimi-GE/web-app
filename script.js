@@ -114,7 +114,7 @@ function handleUpdateClick() {
 
 // Initialize the app
 function init() {
-    handleUpdateClick();
+    weekData = handleUpdateClick();
     renderQuads(weekData.current);
     renderChart(weekData.current, weekData.previous);
     
