@@ -3,15 +3,15 @@ const weekData = {
     current: {
         Mon: 42,
         Tue: 38,
-        Wed: 40,
-        Thu: 30,
+        Wed: 45,
+        Thu: 50,
         Fri: 44
     },
     previous: {
         Mon: 40,
         Tue: 35,
         Wed: 42,
-        Thu: 25,
+        Thu: 48,
         Fri: 40
     }
 };
@@ -80,16 +80,18 @@ function renderChart(currentData, previousData) {
             labels: days,
             datasets: [
                 {
-                    label: 'Previous Week',
-                    data: previousValues,
-                    borderColor: '#ff9800',
-                    backgroundColor: 'rgba(255, 152, 0, 1)',
-                },
-                {
                     label: 'Current Week',
                     data: currentValues,
                     borderColor: '#2196f3',
                     backgroundColor: 'rgba(33, 150, 243, 1)',
+                    tension: 0.3
+                },
+                {
+                    label: 'Previous Week',
+                    data: previousValues,
+                    borderColor: '#ff9800',
+                    backgroundColor: 'rgba(255, 152, 0, 1)',
+                    tension: 0.3
                 }
             ]
         },
@@ -118,8 +120,16 @@ function renderChart(currentData, previousData) {
 // Button click handler
 function handleUpdateClick() {
     console.log('Update button clicked!');
-    // Placeholder for future functionality
-    alert('This will load data from JSON in the future!');
+    
+    getData('reports/simplified-report-09-10-25.json').then(data => {
+        if (data) {
+            renderQuads(data.current);
+            renderChart(data.current, data.previous);
+            console.log('Data loaded successfully!');
+        } else {
+            alert('Failed to load data. Check console for errors.');
+        }
+    });
 }
 
 // Initialize the app
