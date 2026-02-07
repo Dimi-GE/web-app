@@ -97,10 +97,9 @@ function renderChart(currentData, previousData) {
     });
 }
 
-// Button click handler
 function handleUpdateClick() {
     console.log('Update button clicked!');
-
+    
     // Add timestamp to force fresh fetch
     const url = `reports/simplified-report-09-10-25.json?t=${Date.now()}`;
     
@@ -110,7 +109,6 @@ function handleUpdateClick() {
             renderChart(data.current, data.previous);
             console.log('Data loaded successfully!');
         } else {
-            // Fallback to hardcoded data
             renderQuads(weekData.current);
             renderChart(weekData.current, weekData.previous);
             alert('Failed to load data. Check console for errors.');
