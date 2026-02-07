@@ -107,6 +107,9 @@ function handleUpdateClick() {
             renderChart(data.current, data.previous);
             console.log('Data loaded successfully!');
         } else {
+            // Fallback to hardcoded data
+            renderQuads(weekData.current);
+            renderChart(weekData.current, weekData.previous);
             alert('Failed to load data. Check console for errors.');
         }
     });
@@ -114,9 +117,7 @@ function handleUpdateClick() {
 
 // Initialize the app
 function init() {
-    weekData = handleUpdateClick();
-    renderQuads(weekData.current);
-    renderChart(weekData.current, weekData.previous);
+    handleUpdateClick();
     
     // Attach button event listener
     document.getElementById('updateButton').addEventListener('click', handleUpdateClick);
