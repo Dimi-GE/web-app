@@ -1,10 +1,10 @@
 {
-    "CurrentWeek":
-        {
-            "UserSupport": [12,13,14,15,17]
-        },
     "PrevWeek":
         {
             "UserSupport": [23,16,18,5,4]
+        },
+    "CurrentWeek":
+        {
+            "UserSupport": [12,13,14,15,17]
         }
 }
