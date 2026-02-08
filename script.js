@@ -115,11 +115,11 @@ function renderChart(currentData, previousData) {
     });
 }
 
+// Add timestamp to force fresh fetch
+const url = `reports/simplified-report-09-10-25.json?t=${Date.now()}`;
+
 function handleUpdateClick() {
     console.log('Update button clicked!');
-    
-    // Add timestamp to force fresh fetch
-    const url = `reports/simplified-report-09-10-25.json?t=${Date.now()}`;
     
     getData(url).then(data => {
         if (data) {
@@ -134,9 +134,25 @@ function handleUpdateClick() {
     });
 }
 
+function handleUserSupportDataInit() {
+    
+    getData(url).then(data => {
+        if (data) {
+            renderQuads(data.current);
+            renderChart(data.current, data.previous);
+            console.log('Data loaded successfully!');
+        } else {
+            renderQuads(weekData.current);
+            renderChart(weekData.current, weekData.previous);
+            alert('Failed to load data. Check console for errors.');
+        }
+    });
+    
+}
+
 // Initialize the app
 function init() {
-    handleUpdateClick();
+    handleUserSupportDataInit();
     
     // Attach button event listener
     document.getElementById('updateButton').addEventListener('click', handleUpdateClick);
