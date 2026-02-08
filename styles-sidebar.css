@@ -1,0 +1,31 @@
+.sidebar-container {
+    margin: 0;
+    width: 80px;
+    border-radius: 8px;
+    background-color: #300159;
+    position: fixed;
+    height: max-content;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /* This distributes buttons evenly */
+    align-items: center; /* Centers buttons horizontally */
+}
+
+.sidebar-action-button {
+    width: 60px; /* Fixed width for all buttons */
+    height: 60px; /* Equal height makes them squares */
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block; /* Makes margin auto work */
+}
+
+.sidebar-action-button:hover {
+    background-color: #1976d2;
+}
