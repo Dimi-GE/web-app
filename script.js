@@ -1,3 +1,22 @@
+
+// Hardcoded data for testing
+const weekData = {
+    current: {
+        Mon: 3,
+        Tue: 3,
+        Wed: 3,
+        Thu: 3,
+        Fri: 3
+    },
+    previous: {
+        Mon: 5,
+        Tue: 5,
+        Wed: 5,
+        Thu: 5,
+        Fri: 5
+    }
+};
+
 // Calculate total
 function calculateTotal(data) {
     return Object.values(data).reduce((sum, val) => sum + val, 0);
@@ -22,12 +41,12 @@ function createQuad(label, value, isTotal = false) {
     return quad;
 }
 
+const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+
 // Render all quads
 function renderQuads(data) {
     const container = document.getElementById('quads-container');
     container.innerHTML = ''; // Clear existing
-    
-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
     
     // Create quads for each day
     days.forEach(day => {
@@ -47,7 +66,6 @@ let chartInstance = null;
 function renderChart(currentData, previousData) {
     const ctx = document.getElementById('reportChart').getContext('2d');
     
-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
     const currentValues = days.map(day => currentData[day]);
     const previousValues = days.map(day => previousData[day]);
     
