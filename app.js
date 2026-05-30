@@ -34,7 +34,7 @@ function loadView(viewName) {
         })
         .then(html => {
             // Store HTML in cache
-            loadedViews[viewName] = { html: html };
+            // loadedViews[viewName] = { html: html };
             
             // Inject HTML into content container
             contentContainer.innerHTML = html;
