@@ -3,7 +3,7 @@ function loadHomeCards() {
     const cardsContainer = document.getElementById('home-cards-container');
     if (!cardsContainer) return;
     
-    fetch('../../components/cards/cards-grid-interface.html')
+    fetch('../components/cards/cards-grid-interface.html')
         .then(response => {
             if (!response.ok) throw new Error('Failed to load cards');
             return response.text();
