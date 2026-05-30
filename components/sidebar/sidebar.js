@@ -5,6 +5,12 @@ const sidebarNavigation = [
     { label: 'Feedback', view: 'feedback' },
 ];
 
+// Create footer
+const footer = document.createElement('div');
+footer.className = 'sidebar-footer';
+footer.textContent = 'GHST Admin Panel: Version 0.0.1c';
+sidebar.appendChild(footer);
+
 // Create sidebar button
 function createSidebarButton(navItem) {
     const button = document.createElement('button');
