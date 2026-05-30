@@ -21,7 +21,7 @@
     /* Fixing Grid position considering sidebar */
     position: fixed;
     left: var(--sidebar-width);
-    top: 0;
+    top: 200;
     Right: 0;
 }
 
