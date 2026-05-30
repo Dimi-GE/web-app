@@ -11,6 +11,7 @@ function loadView(viewName) {
         contentContainer.innerHTML = loadedViews[viewName].html;
         
         // Re-run the view's init function if it exists
+        // (Not implemented anywhere so far, serves as a placeholder for future view-specific initialization)
         if (loadedViews[viewName].init) {
             loadedViews[viewName].init();
         }

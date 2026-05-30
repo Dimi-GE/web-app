@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+:root {
+    --sidebar-width: 200px;
+}
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
@@ -14,8 +17,9 @@ body {
 
 .content-container {
     flex: 1;
-    margin-left: 200px; /* Space for sidebar */
+    margin-left: var(--sidebar-width); /* Space for sidebar */
+    margin-top: 200px; /* Space for header */
     padding: 30px;
     overflow-y: auto;
-    background-color: white;
+    background-color: #000060;
 }
