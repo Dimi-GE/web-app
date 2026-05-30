@@ -26,3 +26,6 @@ function initHome() {
     console.log('Home view initialized');
     loadHomeCards();
 }
+
+// Auto-initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', initHome);
