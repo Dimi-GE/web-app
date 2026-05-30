@@ -16,6 +16,18 @@
     gap: 15px;
 }
 
+.sidebar-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 8px; /* manual Y offset */
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 10px;
+    color: #ccc;
+    text-align: center;
+}
+
 .sidebar-action-button {
     width: 170px;
     height: 35px;
