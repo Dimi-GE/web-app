@@ -7,23 +7,35 @@ function loadCardGrid() {
         return;
     }
     
+    console.log('Starting to load card grid...');
+    
     // Fetch the card grid interface HTML
     fetch('cards-grid-interface.html')
         .then(response => {
+            console.log('Fetch response:', response.status, response.ok);
             if (!response.ok) {
                 throw new Error(`Failed to load cards-grid-interface.html: ${response.statusText}`);
             }
             return response.text();
         })
         .then(html => {
+            console.log('Fetched HTML length:', html.length);
+            console.log('Fetched HTML preview:', html.substring(0, 200));
+            
             // Extract only the inner HTML (cards), not the wrapper
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = html;
-            const innerCards = tempDiv.querySelector('.cards').innerHTML;
+            const cardsElement = tempDiv.querySelector('.cards');
+            
+            if (!cardsElement) {
+                throw new Error('No .cards element found in fetched HTML');
+            }
+            
+            const innerCards = cardsElement.innerHTML;
+            console.log('Extracted cards HTML length:', innerCards.length);
             
             // Inject cards into the container
             cardsContainer.innerHTML = innerCards;
-            
             console.log('Card grid loaded successfully');
         })
         .catch(error => {
@@ -41,3 +53,5 @@ function initCard() {
     console.log('Card view initialized');
     loadCardGrid();
 }
+// Auto-initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', initCard);
