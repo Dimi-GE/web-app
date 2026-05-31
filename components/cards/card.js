@@ -10,7 +10,7 @@ function loadCardGrid() {
     console.log('Starting to load card grid...');
     
     // Fetch the card grid interface HTML
-    fetch('cards-grid-interface.html')
+    fetch('components/cards/cards-grid-interface.html')
         .then(response => {
             console.log('Fetch response:', response.status, response.ok);
             if (!response.ok) {
@@ -53,5 +53,6 @@ function initCard() {
     console.log('Card view initialized');
     loadCardGrid();
 }
+
 // Auto-initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', initCard);
+// document.addEventListener('DOMContentLoaded', initCard);
