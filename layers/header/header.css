@@ -1,7 +1,6 @@
 :root {
-    --header-height: 75px;
+    --header-height: 50px;
 }
-
 
 .header-container {
     position: fixed;
