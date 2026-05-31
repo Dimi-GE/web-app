@@ -8,7 +8,7 @@ const sidebarNavigation = [
 // Create footer
 const footer = document.createElement('div');
 footer.className = 'sidebar-footer';
-footer.textContent = 'GHST Admin Panel: Version 0.0.1c';
+footer.textContent = 'GHST Admin Panel: Version 0.0.2c';
 sidebar.appendChild(footer);
 
 // Create sidebar button
@@ -48,19 +48,19 @@ function initSidebar() {
      }
  
      // Keep the CSS variable `--sidebar-width` in sync with the actual sidebar width
-     function setSidebarWidth() {
-         const sb = document.getElementById('sidebar');
-         if (!sb) return;
-         const width = sb.offsetWidth;
-         document.documentElement.style.setProperty('--sidebar-width', width + 'px');
-     }
+    //  function setSidebarWidth() {
+    //      const sb = document.getElementById('sidebar');
+    //      if (!sb) return;
+    //      const width = sb.offsetWidth;
+    //      document.documentElement.style.setProperty('--sidebar-width', width + 'px');
+    //  }
  
-     setSidebarWidth();
-     if (sidebar && typeof ResizeObserver !== 'undefined') {
-         const ro = new ResizeObserver(setSidebarWidth);
-         ro.observe(sidebar);
-     }
-     window.addEventListener('resize', setSidebarWidth);
+    //  setSidebarWidth();
+    //  if (sidebar && typeof ResizeObserver !== 'undefined') {
+    //      const ro = new ResizeObserver(setSidebarWidth);
+    //      ro.observe(sidebar);
+    //  }
+    //  window.addEventListener('resize', setSidebarWidth);
  }
 
 document.addEventListener('DOMContentLoaded', initSidebar);

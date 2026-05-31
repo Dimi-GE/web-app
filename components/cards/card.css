@@ -1,13 +1,13 @@
 .cards {
     display: grid;
-    margin: 20px;
+    margin: 10px;
     grid-template-columns: repeat(3, minmax(250px, 1fr));
     gap: 20px;
     /* Fixing Grid position considering sidebar */
     position: fixed;
     left: var(--sidebar-width);
-    top: 200px;
-    Right: 0;
+    top: var(--header-height);
+    right: 0;
 }
 
 .card {

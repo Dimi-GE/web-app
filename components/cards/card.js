@@ -53,6 +53,3 @@ function initCard() {
     console.log('Card view initialized');
     loadCardGrid();
 }
-
-// Auto-initialize when DOM is ready
-// document.addEventListener('DOMContentLoaded', initCard);

@@ -1,17 +1,15 @@
+:root {
+    --header-height: 75px;
+}
+
+
 .header-container {
-    margin: 0;
-    padding: 30px 30px;
-    width: calc(100% - 200px);
-    border-radius: 0;
-    background-color: #600000;
     position: fixed;
-    left: 200px;
-    top: 0;
-    height: 200px;
-    overflow-x: auto;
-    
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 15px;
+    height: var(--header-height);
+    left: var(--sidebar-width);
+    top: 0px;
+    right: 0px;
+    padding: 10px;
+
+    background-color: #600000;
 }

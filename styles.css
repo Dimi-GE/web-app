@@ -1,12 +1,7 @@
 * {
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
-
-/* :root {
-    --sidebar-width: 200px;
-} */
 
 body {
     font-family: Arial, sans-serif;
@@ -17,10 +12,12 @@ body {
 }
 
 .content-container {
-    flex: 1;
-    margin-left: var(--sidebar-width); /* Space for sidebar */
-    margin-top: 200px; /* Space for header */
-    padding: 30px;
+    position: fixed;
+    left: var(--sidebar-width);
+    top: var(--header-height);
+    right: 0px;
+    bottom: 0px;
+    padding: 10px;
     overflow-y: auto;
     background-color: #000060;
 }
