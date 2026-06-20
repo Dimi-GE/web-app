@@ -1,4 +1,58 @@
+## Planned
+
+### Transactions View
+Dedicated full-screen transaction history, separate from the Dashboard panel. Currently a disabled sidebar item.
+
+### Home View
+Live KPI cards pulling from committed data. Spending trend mini-chart. Recent transactions panel. Currently a visual placeholder.
+
+### Onboarding
+Guided introduction to the app covering the data entry workflow, what Flow means, and how the analytics build on committed data.
+
+### Settings View
+App-level configuration: budget year defaults, currency symbol, theme options. Currently a disabled sidebar item.
+
+## In Progress
+
+### PDF: Time Tracking Export
+One-click time tracking report export.
+
+### Time Tracking View
+Shell created with timer, sessions list, and weekly bar chart. Data model and purpose to be defined.
+
+## Ideas
+
+### HackMD Integration
+Pull document content from the HackMD API. Edit docs collaboratively online, see them reflected in the app automatically without touching code.
+
+### GitHub Pages Variant
+A one-pager version of the app hosted on GitHub Pages, with per-user appearance customisation.
+
+### Gamification
+Achievement system to encourage consistent tracking. Milestones unlock features or surface insights — for example, three months of data unlocks forecasting confidence indicators.
+
+### PDF: Financial Report Export
+One-click budget report covering a selected period: income, expenses, savings breakdown, and a forecast snapshot.
+
+### Multi-currency Support
+Track income and expenses in different currencies with a configurable base currency for display.
+
+### Profiles
+Option to split the dashboard into a seperate project, tracking X financial dashboards separately.
+
+### Customization
+Ability to make custom widgets/sections (board constructor?).
+
+### AI-Powered Workflow
+Ability to use agentic LLM via API key.
+
 ## Done
+
+### Roadmap View
+Structure built. Content now driven by markdown files via the engine.
+
+### Markdown Engine
+Fetch and render .md files as styled HTML or structured cards. Changelog and Roadmap views powered by content files, no code changes needed to update content.
 
 ### Dashboard — New Entry
 Full entry form with date, amount, type, category, and optional note. Staged entries workflow — entries are reviewed before being committed. Starting Funds as a one-time income entry that locks once set.
@@ -23,48 +77,3 @@ Rolling 12-month budget year projection from a user-selected start month. Weight
 
 ### Per-view Documentation
 FEATURES.md and ANALYTICS.md covering each view in detail. Authoring convention defined for both cards and docs rendering modes.
-
-## In Progress
-
-### Markdown Engine
-Fetch and render .md files as styled HTML or structured cards. Changelog and Roadmap views powered by content files, no code changes needed to update content.
-
-### Roadmap View
-Structure built. Content now driven by markdown files via the engine.
-
-### Time Tracking View
-Shell created with timer, sessions list, and weekly bar chart. Data model and purpose to be defined.
-
-## Planned
-
-### Home View
-Live KPI cards pulling from committed data. Spending trend mini-chart. Recent transactions panel. Currently a visual placeholder.
-
-### Transactions View
-Dedicated full-screen transaction history, separate from the Dashboard panel. Currently a disabled sidebar item.
-
-### Settings View
-App-level configuration: budget year defaults, currency symbol, theme options. Currently a disabled sidebar item.
-
-### Onboarding
-Guided introduction to the app covering the data entry workflow, what Flow means, and how the analytics build on committed data.
-
-## Ideas
-
-### HackMD Integration
-Pull document content from the HackMD API. Edit docs collaboratively online, see them reflected in the app automatically without touching code.
-
-### GitHub Pages Variant
-A one-pager version of the app hosted on GitHub Pages, with per-user appearance customisation.
-
-### Gamification
-Achievement system to encourage consistent tracking. Milestones unlock features or surface insights — for example, three months of data unlocks forecasting confidence indicators.
-
-### PDF Export
-One-click budget report covering a selected period: income, expenses, savings breakdown, and a forecast snapshot.
-
-### Multi-currency Support
-Track income and expenses in different currencies with a configurable base currency for display.
-
-### Profiles
-Option to split the dashboard into a seperate project, tracking X financial dashboards separately.

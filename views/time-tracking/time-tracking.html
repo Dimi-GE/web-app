@@ -5,6 +5,37 @@
         <span class="tt-subtitle" id="tt-today-label"></span>
     </div>
 
+    <!-- Timesheet Settings -->
+    <div class="tt-section">
+        <h2 class="section-title">Timesheet Settings</h2>
+        <div class="tt-settings-card">
+            <div class="tt-settings-row">
+                <label class="tt-settings-label">Freelancer Name</label>
+                <input type="text" id="tt-freelancer" class="tt-settings-input" placeholder="Your name" />
+            </div>
+            <div class="tt-settings-row">
+                <label class="tt-settings-label">Company</label>
+                <input type="text" id="tt-company" class="tt-settings-input" placeholder="Client / company name" />
+            </div>
+            <button class="tt-settings-save" id="tt-settings-save">Save</button>
+        </div>
+    </div>
+
+    <!-- Timesheet Calendar -->
+    <div class="tt-section">
+        <div class="tt-cal-topbar">
+            <div class="tt-cal-nav">
+                <button class="tt-cal-arrow" id="tt-cal-prev">&#8249;</button>
+                <span class="tt-cal-month-label" id="tt-cal-label"></span>
+                <button class="tt-cal-arrow" id="tt-cal-next">&#8250;</button>
+            </div>
+            <button class="tt-export-btn" id="tt-export-pdf">
+                <i class="ti ti-file-type-pdf"></i> Export PDF
+            </button>
+        </div>
+        <div class="tt-calendar" id="tt-calendar"></div>
+    </div>
+
     <!-- Timer -->
     <div class="tt-timer-card">
         <div class="tt-timer-left">
@@ -42,52 +73,58 @@
         <div class="tt-week-grid" id="tt-week-grid">
             <div class="tt-week-day">
                 <span class="tt-week-day-label">Mon</span>
-                <div class="tt-week-bar-wrap">
-                    <div class="tt-week-bar placeholder-bar" style="height: 40%"></div>
-                </div>
+                <div class="tt-week-bar-wrap"><div class="tt-week-bar placeholder-bar" style="height: 40%"></div></div>
                 <span class="tt-week-day-value placeholder-text-sm"></span>
             </div>
             <div class="tt-week-day">
                 <span class="tt-week-day-label">Tue</span>
-                <div class="tt-week-bar-wrap">
-                    <div class="tt-week-bar placeholder-bar" style="height: 70%"></div>
-                </div>
+                <div class="tt-week-bar-wrap"><div class="tt-week-bar placeholder-bar" style="height: 70%"></div></div>
                 <span class="tt-week-day-value placeholder-text-sm"></span>
             </div>
             <div class="tt-week-day">
                 <span class="tt-week-day-label">Wed</span>
-                <div class="tt-week-bar-wrap">
-                    <div class="tt-week-bar placeholder-bar" style="height: 55%"></div>
-                </div>
+                <div class="tt-week-bar-wrap"><div class="tt-week-bar placeholder-bar" style="height: 55%"></div></div>
                 <span class="tt-week-day-value placeholder-text-sm"></span>
             </div>
             <div class="tt-week-day">
                 <span class="tt-week-day-label">Thu</span>
-                <div class="tt-week-bar-wrap">
-                    <div class="tt-week-bar placeholder-bar" style="height: 90%"></div>
-                </div>
+                <div class="tt-week-bar-wrap"><div class="tt-week-bar placeholder-bar" style="height: 90%"></div></div>
                 <span class="tt-week-day-value placeholder-text-sm"></span>
             </div>
             <div class="tt-week-day">
                 <span class="tt-week-day-label">Fri</span>
-                <div class="tt-week-bar-wrap">
-                    <div class="tt-week-bar placeholder-bar" style="height: 30%"></div>
-                </div>
+                <div class="tt-week-bar-wrap"><div class="tt-week-bar placeholder-bar" style="height: 30%"></div></div>
                 <span class="tt-week-day-value placeholder-text-sm"></span>
             </div>
             <div class="tt-week-day">
                 <span class="tt-week-day-label">Sat</span>
-                <div class="tt-week-bar-wrap">
-                    <div class="tt-week-bar placeholder-bar" style="height: 10%"></div>
-                </div>
+                <div class="tt-week-bar-wrap"><div class="tt-week-bar placeholder-bar" style="height: 10%"></div></div>
                 <span class="tt-week-day-value placeholder-text-sm"></span>
             </div>
             <div class="tt-week-day">
                 <span class="tt-week-day-label">Sun</span>
-                <div class="tt-week-bar-wrap">
-                    <div class="tt-week-bar placeholder-bar" style="height: 0%"></div>
-                </div>
+                <div class="tt-week-bar-wrap"><div class="tt-week-bar placeholder-bar" style="height: 0%"></div></div>
                 <span class="tt-week-day-value placeholder-text-sm"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day entry modal -->
+    <div class="tt-modal-backdrop" id="tt-modal-backdrop">
+        <div class="tt-modal">
+            <div class="tt-modal-title" id="tt-modal-date-label"></div>
+            <div class="tt-modal-field">
+                <label class="tt-modal-label">Hours</label>
+                <input type="number" id="tt-modal-hours" class="tt-modal-input" min="0" max="24" step="0.5" placeholder="0" />
+            </div>
+            <div class="tt-modal-field">
+                <label class="tt-modal-label">Tasks <span class="tt-modal-hint">one per line</span></label>
+                <textarea id="tt-modal-tasks" class="tt-modal-textarea" placeholder="What did you work on?"></textarea>
+            </div>
+            <div class="tt-modal-actions">
+                <button class="tt-modal-btn tt-modal-btn--cancel" id="tt-modal-cancel">Cancel</button>
+                <button class="tt-modal-btn tt-modal-btn--clear" id="tt-modal-delete">Clear</button>
+                <button class="tt-modal-btn tt-modal-btn--save" id="tt-modal-save">Save</button>
             </div>
         </div>
     </div>

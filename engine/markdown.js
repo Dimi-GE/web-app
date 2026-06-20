@@ -63,7 +63,7 @@ function mdRenderColumns(tokens, targetEl) {
 
     targetEl.innerHTML = `<div class="roadmap-columns">${
         sections.map(s => `
-            <div class="roadmap-column">
+            <div class="roadmap-column roadmap-column--${MD_COLUMN_DOTS[s.title] || 'idea'}">
                 <div class="roadmap-column-header">
                     <span class="column-dot column-dot--${MD_COLUMN_DOTS[s.title] || 'idea'}"></span>
                     <span>${s.title}</span>

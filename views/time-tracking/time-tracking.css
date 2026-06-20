@@ -252,7 +252,309 @@
     font-variant-numeric: tabular-nums;
 }
 
-/* Placeholder shimmer */
+/* ── Timesheet Settings ───────────────────────── */
+.tt-settings-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.tt-settings-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.tt-settings-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    min-width: 140px;
+    flex-shrink: 0;
+}
+
+.tt-settings-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-primary);
+    font-size: 13px;
+    padding: 4px 0;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.tt-settings-input:focus { border-bottom-color: var(--accent); }
+.tt-settings-input::placeholder { color: var(--text-muted); }
+
+.tt-settings-save {
+    align-self: flex-end;
+    padding: 7px 20px;
+    background: var(--accent);
+    border: none;
+    border-radius: 6px;
+    color: #000;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+.tt-settings-save:hover { opacity: 0.88; }
+
+/* ── Calendar topbar ──────────────────────────── */
+.tt-cal-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.tt-cal-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tt-cal-arrow {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 20px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.15s, border-color 0.15s;
+    padding: 0;
+}
+.tt-cal-arrow:hover { color: var(--text-primary); border-color: var(--text-muted); }
+
+.tt-cal-month-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    min-width: 150px;
+    text-align: center;
+}
+
+.tt-export-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+}
+.tt-export-btn:hover { color: var(--text-primary); border-color: var(--text-muted); }
+
+/* ── Calendar grid ────────────────────────────── */
+.tt-calendar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tt-cal-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid var(--border);
+}
+
+.tt-cal-weekday {
+    padding: 8px 0;
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.tt-cal-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.tt-cal-day {
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 10px;
+    min-height: 66px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    background: transparent;
+    text-align: left;
+    font-family: inherit;
+    transition: background 0.12s;
+}
+.tt-cal-day:nth-child(7n) { border-right: none; }
+.tt-cal-day:hover { background: rgba(255,255,255,0.03); }
+
+.tt-cal-day--other-month { opacity: 0.3; }
+.tt-cal-day--today .tt-cal-day-num { color: var(--accent); font-weight: 700; }
+.tt-cal-day--weekend .tt-cal-day-num { color: #555; }
+
+.tt-cal-day-num {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+    line-height: 1;
+}
+
+.tt-cal-day-hours {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.tt-cal-day-tasks {
+    font-size: 10px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* ── Day entry modal ──────────────────────────── */
+.tt-modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+}
+.tt-modal-backdrop.open { display: flex; }
+
+.tt-modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+.tt-modal-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.tt-modal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tt-modal-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.tt-modal-hint {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: none;
+    letter-spacing: 0;
+    margin-left: 6px;
+    font-weight: 400;
+}
+
+.tt-modal-input {
+    background: var(--app-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 10px;
+    outline: none;
+    width: 100px;
+    transition: border-color 0.15s;
+}
+.tt-modal-input:focus { border-color: var(--accent); }
+
+.tt-modal-textarea {
+    background: var(--app-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 13px;
+    padding: 8px 10px;
+    outline: none;
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+    line-height: 1.5;
+    transition: border-color 0.15s;
+}
+.tt-modal-textarea:focus { border-color: var(--accent); }
+.tt-modal-textarea::placeholder { color: var(--text-muted); }
+
+.tt-modal-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.tt-modal-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    border: none;
+}
+
+.tt-modal-btn--cancel {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+}
+.tt-modal-btn--cancel:hover { color: var(--text-primary); }
+
+.tt-modal-btn--clear {
+    background: rgba(224, 92, 92, 0.12);
+    color: #e05c5c;
+}
+.tt-modal-btn--clear:hover { opacity: 0.8; }
+
+.tt-modal-btn--save {
+    background: var(--accent);
+    color: #000;
+}
+.tt-modal-btn--save:hover { opacity: 0.88; }
+
+/* ── Placeholder shimmer ──────────────────────── */
 @keyframes shimmer {
     0%   { opacity: 0.35; }
     50%  { opacity: 0.6; }
