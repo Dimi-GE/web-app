@@ -18,7 +18,7 @@ App-level configuration: budget year defaults, currency symbol, theme options. C
 One-click time tracking report export.
 
 ### Time Tracking View
-Shell created with timer, sessions list, and weekly bar chart. Data model and purpose to be defined.
+Shell created with calendar, timer, sessions list, and weekly bar chart. Data model and purpose to be defined.
 
 ## Ideas
 
