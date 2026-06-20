@@ -18,6 +18,14 @@
     --negative: #e05c5c;
 }
 
+.section-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: var(--app-bg);

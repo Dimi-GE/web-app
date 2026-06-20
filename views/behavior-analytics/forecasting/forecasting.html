@@ -1,0 +1,100 @@
+<div class="forecasting-component">
+
+    <div class="forecasting-controls">
+        <div class="forecast-picker">
+            <span class="forecast-picker-label">Budget year starts</span>
+            <select id="forecast-month-select" class="forecast-select"></select>
+            <select id="forecast-year-select" class="forecast-select"></select>
+        </div>
+        <span id="forecast-data-label" class="forecast-data-label"></span>
+    </div>
+
+    <div class="forecast-chart-wrap">
+        <canvas id="forecast-chart"></canvas>
+    </div>
+
+    <div class="forecast-summary">
+
+        <div class="forecast-summary-card">
+            <span class="forecast-card-label">Income</span>
+            <div class="forecast-card-body">
+                <div class="forecast-card-left">
+                    <div class="forecast-card-sub">
+                        <span class="forecast-card-sublabel">to date</span>
+                        <span class="forecast-card-actual" id="fc-actual-income">—</span>
+                    </div>
+                    <div class="forecast-card-sub">
+                        <span class="forecast-card-sublabel">projected</span>
+                        <span class="forecast-card-remaining" id="fc-remaining-income">—</span>
+                    </div>
+                </div>
+                <div class="forecast-card-right">
+                    <span class="forecast-card-sublabel">year-end</span>
+                    <span class="forecast-card-total" id="fc-total-income">—</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="forecast-summary-card">
+            <span class="forecast-card-label">Expenses</span>
+            <div class="forecast-card-body">
+                <div class="forecast-card-left">
+                    <div class="forecast-card-sub">
+                        <span class="forecast-card-sublabel">to date</span>
+                        <span class="forecast-card-actual" id="fc-actual-expenses">—</span>
+                    </div>
+                    <div class="forecast-card-sub">
+                        <span class="forecast-card-sublabel">projected</span>
+                        <span class="forecast-card-remaining" id="fc-remaining-expenses">—</span>
+                    </div>
+                </div>
+                <div class="forecast-card-right">
+                    <span class="forecast-card-sublabel">year-end</span>
+                    <span class="forecast-card-total negative" id="fc-total-expenses">—</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="forecast-summary-card">
+            <span class="forecast-card-label">Savings</span>
+            <div class="forecast-card-body">
+                <div class="forecast-card-left">
+                    <div class="forecast-card-sub">
+                        <span class="forecast-card-sublabel">to date</span>
+                        <span class="forecast-card-actual" id="fc-actual-savings">—</span>
+                    </div>
+                    <div class="forecast-card-sub">
+                        <span class="forecast-card-sublabel">projected</span>
+                        <span class="forecast-card-remaining" id="fc-remaining-savings">—</span>
+                    </div>
+                </div>
+                <div class="forecast-card-right">
+                    <span class="forecast-card-sublabel">year-end</span>
+                    <span class="forecast-card-total" id="fc-total-savings">—</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="forecast-summary-card">
+            <span class="forecast-card-label">Net Cash Flow</span>
+            <div class="forecast-card-body">
+                <div class="forecast-card-left">
+                    <div class="forecast-card-sub">
+                        <span class="forecast-card-sublabel">to date</span>
+                        <span class="forecast-card-actual" id="fc-actual-cashflow">—</span>
+                    </div>
+                    <div class="forecast-card-sub">
+                        <span class="forecast-card-sublabel">projected</span>
+                        <span class="forecast-card-remaining" id="fc-remaining-cashflow">—</span>
+                    </div>
+                </div>
+                <div class="forecast-card-right">
+                    <span class="forecast-card-sublabel">year-end</span>
+                    <span class="forecast-card-total" id="fc-total-cashflow">—</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

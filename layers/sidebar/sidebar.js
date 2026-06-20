@@ -1,9 +1,11 @@
 const NAV_ITEMS = [
-    { icon: 'ti-home',              label: 'Home',         view: 'home' },
-    { icon: 'ti-layout-dashboard', label: 'Dashboard',    view: 'dashboard' },
-    { icon: 'ti-receipt',           label: 'Transactions', view: null },
-    { icon: 'ti-chart-bar',         label: 'Analytics',   view: 'behavior-analytics' },
-    { icon: 'ti-settings',          label: 'Settings',    view: null },
+    { icon: 'ti-home',              label: 'Home',          view: 'home' },
+    { icon: 'ti-layout-dashboard',  label: 'Dashboard',     view: 'dashboard' },
+    { icon: 'ti-receipt',           label: 'Transactions',  view: null },
+    { icon: 'ti-chart-bar',         label: 'Analytics',     view: 'behavior-analytics' },
+    { icon: 'ti-clock-hour-4',      label: 'Time',          view: 'time-tracking' },
+    { icon: 'ti-map-2',             label: 'Roadmap',       view: 'roadmap' },
+    { icon: 'ti-settings',          label: 'Settings',      view: null },
 ];
 
 function initSidebar() {

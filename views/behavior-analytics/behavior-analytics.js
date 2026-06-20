@@ -25,13 +25,17 @@ function initBehaviorAnalytics() {
         });
     }
 
-    Promise.all([
-        loadComponent(document.getElementById('spending-heatmap-slot'), 'spending-heatmap'),
-        loadComponent(document.getElementById('earnings-heatmap-slot'), 'earnings-heatmap'),
-        loadComponent(document.getElementById('trends-component-slot'), 'trends'),
-    ]).then(() => {
-        initSpendingHeatmap();
-        initEarningsHeatmap();
-        initTrends();
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js').then(() => {
+        Promise.all([
+            loadComponent(document.getElementById('spending-heatmap-slot'), 'spending-heatmap'),
+            loadComponent(document.getElementById('earnings-heatmap-slot'), 'earnings-heatmap'),
+            loadComponent(document.getElementById('trends-component-slot'), 'trends'),
+            loadComponent(document.getElementById('forecasting-component-slot'), 'forecasting'),
+        ]).then(() => {
+            initSpendingHeatmap();
+            initEarningsHeatmap();
+            initTrends();
+            initForecasting();
+        });
     });
 }
