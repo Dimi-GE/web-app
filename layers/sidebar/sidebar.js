@@ -68,7 +68,7 @@ function initSidebar() {
     hamburger.className = 'mobile-hamburger';
     hamburger.title = 'Menu';
     hamburger.innerHTML = '<i class="ti ti-menu-2"></i>';
-    document.body.appendChild(hamburger);
+    document.getElementById('header').appendChild(hamburger);
 
     function openDrawer() {
         drawer.classList.add('open');
