@@ -66,6 +66,11 @@ body {
     .content-container {
         grid-column: 1 / -1;
     }
+
+    /* Prevent iOS auto-zoom on input focus */
+    input, select, textarea {
+        font-size: 16px !important;
+    }
 }
 
 .content-container {
