@@ -21,7 +21,7 @@ function initSettings() {
         ['dashboard_committed', 'forecast_settings', 'tt_entries', 'tt_sessions', 'tt_settings']
             .forEach(k => localStorage.removeItem(k));
         sessionStorage.removeItem('activeView');
-        loadView('home');
+        location.reload();
     }
 
     showResetButton();
