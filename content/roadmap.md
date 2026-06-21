@@ -1,16 +1,13 @@
 ## Planned
 
-### Transactions View
-Dedicated full-screen transaction history, separate from the Dashboard panel. Currently a disabled sidebar item.
-
-### Home View
-Live KPI cards pulling from committed data. Spending trend mini-chart. Recent transactions panel. Currently a visual placeholder.
+### Settings View
+App-level configuration: budget year defaults, currency symbol, theme options. Currently a disabled sidebar item.
 
 ### Onboarding
 Guided introduction to the app covering the data entry workflow, what Flow means, and how the analytics build on committed data.
 
-### Settings View
-App-level configuration: budget year defaults, currency symbol, theme options. Currently a disabled sidebar item.
+### Mobile View Adaptation
+Re-arrange web page components for proper rendering on mobile devices.
 
 ## In Progress
 
@@ -20,7 +17,13 @@ One-click time tracking report export.
 ### Time Tracking View
 Shell created with calendar, timer, sessions list, and weekly bar chart. Data model and purpose to be defined.
 
-## Ideas
+## Backlog
+
+### Transactions View
+Dedicated full-screen transaction history, separate from the Dashboard panel. Currently a disabled sidebar item.
+
+### Home View
+Live KPI cards pulling from committed data. Spending trend mini-chart. Recent transactions panel. Currently a visual placeholder.
 
 ### HackMD Integration
 Pull document content from the HackMD API. Edit docs collaboratively online, see them reflected in the app automatically without touching code.

@@ -1,7 +1,7 @@
 const NAV_ITEMS = [
     { icon: 'ti-home',              label: 'Home',          view: 'home' },
     { icon: 'ti-layout-dashboard',  label: 'Dashboard',     view: 'dashboard' },
-    { icon: 'ti-receipt',           label: 'Transactions',  view: null },
+    { icon: 'ti-receipt',           label: 'Transactions',  view: null, hidden: true },
     { icon: 'ti-chart-bar',         label: 'Analytics',     view: 'behavior-analytics' },
     { icon: 'ti-clock-hour-4',      label: 'Time',          view: 'time-tracking' },
     { icon: 'ti-map-2',             label: 'Roadmap',       view: 'roadmap' },
@@ -16,7 +16,7 @@ function initSidebar() {
 
     sidebar.innerHTML = `
         <nav class="sidebar-nav">
-            ${NAV_ITEMS.map((item, i) => `
+            ${NAV_ITEMS.map((item, i) => item.hidden ? '' : `
                 <div class="nav-item${item.view === activeView ? ' active' : ''}${!item.view ? ' nav-item--disabled' : ''}" data-nav-index="${i}">
                     <i class="ti ${item.icon}"></i>
                     <span class="nav-label">${item.label}</span>

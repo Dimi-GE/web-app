@@ -1,3 +1,11 @@
+## v0.0.1c.4 — June 2026
+
+- `improvement` Recent Transactions — date, type, amount, and category columns are fixed-width for consistent spreadsheet-like alignment
+- `improvement` Recent Transactions — notes rendered inline on the same row as the transaction, offset from the category badge
+- `improvement` Recent Transactions — category badges coloured to match the Expenses by Category chart palette; income and savings categories have their own distinct colours
+- `improvement` Recent Transactions — transaction type shows a coloured icon (trending-up for Income, coin for Savings, trending-down for Expenses)
+- `parked` Transactions view hidden from sidebar navigation pending future development
+
 ## v0.0.1c.3 — June 2026
 
 - `feature` Time Tracking — Submit button wires timer to the calendar: submitting a session adds hours and task label to today's calendar entry, the Today list, and the This Week bars

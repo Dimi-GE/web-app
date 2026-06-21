@@ -1,5 +1,44 @@
 let allTxEntries = [];
 
+const TX_CATEGORY_COLORS = {
+    // Income
+    starting_funds: '#ffd54f',
+    salary:         '#66bb6a',
+    // Savings
+    flow:           '#42a5f5',
+    // Expenses — mirrors EXPENSE_CATEGORIES in expenses-chart.js
+    groceries:      '#4caf7d',
+    deliveries:     '#f5a800',
+    pets:           '#e05c5c',
+    medical:        '#e57373',
+    media:          '#ba68c8',
+    subscriptions:  '#4fc3f7',
+    rent:           '#ff8a65',
+    online:         '#a1887f',
+    shopping:       '#f06292',
+    gifts:          '#ce93d8',
+    transport:      '#80cbc4',
+    personal:       '#fff176',
+    // Fallback
+    other:          '#90a4ae',
+};
+
+function getCategoryColor(category) {
+    return TX_CATEGORY_COLORS[category] || TX_CATEGORY_COLORS.other;
+}
+
+const TX_TYPE_ICONS = {
+    income:   'ti-trending-up',
+    savings:  'ti-coin',
+    expenses: 'ti-trending-down',
+};
+
+const TX_TYPE_COLORS = {
+    income:   '#4caf7d',
+    savings:  '#f5a800',
+    expenses: '#e05c5c',
+};
+
 function initTxHistory() {
     const txContainer   = document.getElementById('tx-container');
     const txList        = document.getElementById('tx-list');
@@ -99,10 +138,10 @@ function renderTxRows(entries) {
                 <div class="tx-meta">
                     <span class="tx-date">${entry.date}</span>
                     <span class="tx-amount">${entry.amount.toFixed(2)}</span>
-                    <span class="tx-type">${entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}</span>
-                    <span class="tx-category">${entry.categoryLabel}</span>
+                    <span class="tx-type"><i class="ti ${TX_TYPE_ICONS[entry.type]}" style="color:${TX_TYPE_COLORS[entry.type]};"></i> ${entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}</span>
+                    <span class="tx-category" style="background-color:${getCategoryColor(entry.category)}22;color:${getCategoryColor(entry.category)};">${entry.categoryLabel}</span>
+                    ${entry.note ? `<span class="tx-note">${entry.note}</span>` : ''}
                 </div>
-                ${entry.note ? `<div class="tx-note">${entry.note}</div>` : ''}
             </div>
         `;
         txList.appendChild(item);
