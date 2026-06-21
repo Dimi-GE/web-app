@@ -5,7 +5,7 @@ const NAV_ITEMS = [
     { icon: 'ti-chart-bar',         label: 'Analytics',     view: 'behavior-analytics' },
     { icon: 'ti-clock-hour-4',      label: 'Time',          view: 'time-tracking' },
     { icon: 'ti-map-2',             label: 'Roadmap',       view: 'roadmap' },
-    { icon: 'ti-settings',          label: 'Settings',      view: null },
+    { icon: 'ti-settings',          label: 'Settings',      view: 'settings' },
 ];
 
 function buildNavHTML(activeView) {
