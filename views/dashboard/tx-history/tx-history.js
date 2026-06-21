@@ -101,8 +101,8 @@ function renderTxRows(entries) {
                     <span class="tx-amount">${entry.amount.toFixed(2)}</span>
                     <span class="tx-type"><i class="ti ${TX_TYPE_ICONS[entry.type]}" style="color:${TX_TYPE_COLORS[entry.type]};"></i> ${entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}</span>
                     <span class="tx-category" style="background-color:${getCategoryColor(entry.category)}22;color:${getCategoryColor(entry.category)};">${entry.categoryLabel}</span>
-                    ${entry.note ? `<span class="tx-note">${entry.note}</span>` : ''}
                 </div>
+                ${entry.note ? `<div class="tx-note">${entry.note}</div>` : ''}
             </div>
         `;
         txList.appendChild(item);
