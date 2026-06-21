@@ -6,11 +6,10 @@ App-level configuration: budget year defaults, currency symbol, theme options. C
 ### Onboarding
 Guided introduction to the app covering the data entry workflow, what Flow means, and how the analytics build on committed data.
 
-### Mobile View Adaptation
-Re-arrange web page components for proper rendering on mobile devices.
-
 ## In Progress
 
+### Mobile View Adaptation
+Re-arrange web page components for proper rendering on mobile devices.
 
 ## Backlog
 

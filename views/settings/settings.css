@@ -1,0 +1,95 @@
+.settings-view {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 600px;
+}
+
+.settings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.settings-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.settings-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.settings-item-label {
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.settings-item-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    max-width: 380px;
+}
+
+.settings-item-action {
+    flex-shrink: 0;
+}
+
+.btn-reset {
+    background: transparent;
+    border: 1px solid var(--negative);
+    color: var(--negative);
+    padding: 8px 18px;
+    font-size: 13px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+}
+
+.btn-reset:hover {
+    background: var(--negative);
+    color: #fff;
+}
+
+.btn-confirm-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn-confirm-yes {
+    background: var(--negative);
+    border: 1px solid var(--negative);
+    color: #fff;
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-confirm-no {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+}
+
+.btn-confirm-no:hover {
+    color: var(--text-primary);
+    border-color: var(--text-muted);
+}
