@@ -41,7 +41,7 @@ body {
     height: 100vh;
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;
-    grid-template-rows: 0 1fr;
+    grid-template-rows: var(--header-height) 1fr;
     transition: grid-template-columns 0.25s ease;
 }
 
@@ -55,7 +55,7 @@ body {
     }
 }
 
-@media (hover: none) and (pointer: coarse) {
+@media (hover: none) and (pointer: coarse), (max-width: 768px) and (pointer: coarse) {
     .window-wrapper {
         grid-template-columns: 0 1fr;
     }
@@ -66,10 +66,6 @@ body {
     .content-container {
         grid-column: 1 / -1;
     }
-    .content-container {
-        padding-top: 55px;
-    }
-
     /* Prevent iOS auto-zoom on input focus */
     input, select, textarea {
         font-size: 16px !important;
