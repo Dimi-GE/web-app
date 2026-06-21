@@ -1,3 +1,11 @@
+## v0.0.1c.6 — June 2026
+
+- `feature` Mobile navigation — sidebar hidden on touch devices; hamburger button (fixed, top-right) opens a slide-in drawer with full nav labels; backdrop tap closes it
+- `feature` Settings view — new view with a Reset All Data action; requires inline confirmation before clearing all localStorage keys and reloading to Home
+- `improvement` Recent Transactions — note moved to a second line below the date/amount/type/category row
+- `improvement` Recent Transactions — filters hidden when collapsed; "Full History" link hidden when expanded; collapse via backdrop tap only
+- `fix` Dashboard inputs — font-size forced to 16px on touch devices to prevent iOS Safari auto-zoom on focus
+
 ## v0.0.1c.5 — June 2026
 
 - `feature` Home view — KPI row with Total Saved, Monthly Income, Monthly Expenses, and Cash Flow cards populated from committed data

@@ -1,15 +1,10 @@
 ## Planned
 
-### Settings View
-App-level configuration: budget year defaults, currency symbol, theme options. Currently a disabled sidebar item.
+### Settings — Extended Configuration
+Additional settings: budget year defaults, currency symbol, theme options.
 
 ### Onboarding
 Guided introduction to the app covering the data entry workflow, what Flow means, and how the analytics build on committed data.
-
-## In Progress
-
-### Mobile View Adaptation
-Re-arrange web page components for proper rendering on mobile devices.
 
 ## Backlog
 
@@ -45,6 +40,15 @@ Ability to use agentic LLM via API key.
 
 ## Done
 
+### Per-view Documentation
+FEATURES.md and ANALYTICS.md covering each view in detail. Authoring convention defined for both cards and docs rendering modes.
+
+### Mobile Navigation
+Sidebar hidden on touch devices. Hamburger button opens a slide-in drawer with full nav labels. Backdrop tap to close.
+
+### Settings View
+Reset All Data action with inline confirmation. Clears all localStorage keys and reloads to Home.
+
 ### PDF: Time Tracking Export
 One-click time tracking report export.
 
@@ -77,6 +81,3 @@ Line chart for income, expenses, savings, and cash flow. Week, month, and quarte
 
 ### Analytics — Forecasting
 Rolling 12-month budget year projection from a user-selected start month. Weighted average built from historical months — recent months carry more weight. Chart splits at today: solid lines for actuals, dashed for projections. Three-value summary cards: to date, projected remaining, and year-end total.
-
-### Per-view Documentation
-FEATURES.md and ANALYTICS.md covering each view in detail. Authoring convention defined for both cards and docs rendering modes.
