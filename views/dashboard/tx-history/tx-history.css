@@ -26,9 +26,17 @@
 }
 
 .tx-filters {
-    display: flex;
+    display: none;
     gap: 6px;
     margin-left: auto;
+}
+
+.tx-container.expanded .tx-filters {
+    display: flex;
+}
+
+.tx-container.expanded .link-text {
+    display: none;
 }
 
 .tx-filter-select {
