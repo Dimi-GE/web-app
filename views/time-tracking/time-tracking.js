@@ -291,6 +291,24 @@ function initTimeTracking() {
         renderCalendar();
     });
 
+    // ── File panel toggle ──────────────────────────────────────────────────
+    const fileToggle = document.getElementById('tt-file-toggle');
+    const filePanel  = document.getElementById('tt-file-panel');
+
+    fileToggle.addEventListener('click', () => {
+        const isOpen = filePanel.classList.toggle('open');
+        fileToggle.classList.toggle('active', isOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (filePanel.classList.contains('open') &&
+            !filePanel.contains(e.target) &&
+            e.target !== fileToggle) {
+            filePanel.classList.remove('open');
+            fileToggle.classList.remove('active');
+        }
+    });
+
     // ── Calendar JSON export ───────────────────────────────────────────────
     document.getElementById('tt-export-json').addEventListener('click', () => {
         const data = { entries: loadEntries(), sessions: loadSessions() };

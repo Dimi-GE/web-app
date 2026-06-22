@@ -48,16 +48,21 @@
                 <span class="tt-cal-month-label" id="tt-cal-label"></span>
                 <button class="tt-cal-arrow" id="tt-cal-next">&#8250;</button>
             </div>
-            <div class="tt-cal-actions">
-                <button class="tt-export-btn" id="tt-export-json" title="Export calendar data as JSON">
-                    <i class="ti ti-download"></i> Export
-                </button>
-                <label class="tt-export-btn tt-import-label" title="Import calendar data from JSON">
-                    <i class="ti ti-upload"></i> Import
-                    <input type="file" id="tt-import-json" accept=".json" style="display:none">
-                </label>
-                <button class="tt-export-btn" id="tt-export-pdf">
-                    <i class="ti ti-file-type-pdf"></i> Export PDF
+            <div class="tt-file-ops">
+                <div class="tt-file-panel" id="tt-file-panel">
+                    <button class="tt-export-btn" id="tt-export-json">
+                        <i class="ti ti-download"></i> Export JSON
+                    </button>
+                    <label class="tt-export-btn tt-import-label">
+                        <i class="ti ti-upload"></i> Import JSON
+                        <input type="file" id="tt-import-json" accept=".json" style="display:none">
+                    </label>
+                    <button class="tt-export-btn" id="tt-export-pdf">
+                        <i class="ti ti-file-type-pdf"></i> Export PDF
+                    </button>
+                </div>
+                <button class="tt-file-toggle" id="tt-file-toggle" title="File options">
+                    <i class="ti ti-file-export"></i>
                 </button>
             </div>
         </div>
