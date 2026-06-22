@@ -1,5 +1,11 @@
 ## Planned
 
+### Calendar Manual Sync (Import/Export)
+An option for sharing data across devices in case local storage is cleaned on browser exit.
+
+### Overall Data Export
+An option export/import data across devices in case local storage is cleaned on browser exit.
+
 ### Settings — Extended Configuration
 Additional settings: budget year defaults, currency symbol, theme options.
 
