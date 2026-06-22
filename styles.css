@@ -82,7 +82,20 @@ body {
     padding: 20px;
 }
 
-/* Global scrollbar styling */
+/* ── Loading overlay ── */
+#app-loader {
+    transition: opacity 0.4s ease;
+}
+
+@keyframes loader-spin {
+    to { transform: rotate(360deg); }
+}
+
+#loader-ring {
+    animation: loader-spin 0.75s linear infinite;
+}
+
+/* ── Global scrollbar styling ── */
 * {
     scrollbar-width: thin;
     scrollbar-color: var(--card-border) var(--card-bg);
