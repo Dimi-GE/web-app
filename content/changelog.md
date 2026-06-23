@@ -1,3 +1,10 @@
+## v0.0.1b — June 2026
+
+- `fix` Loading — per-view spinner replaces the former full-screen overlay; spinner appears inside the content area on first visit to each view and lifts only when the view signals it is fully rendered, preventing content flash across all views
+- `fix` Loading — `window.viewReady()` callback introduced; each view's init function calls it at the natural end of its async work (after charts render, sub-components load, and markdown fetches complete) so the spinner duration is tied to actual content readiness rather than a fixed timeout
+- `improvement` Loading — load time logged to console per view (`[viewName] ready in Xms`) to aid performance profiling
+- `improvement` Loading — 8-second safety timeout auto-dismisses the spinner if a view's init never signals ready, preventing the overlay from hanging indefinitely
+
 ## v0.0.1c.7 — June 2026
 
 - `feature` Settings — Backup All Data action downloads a full snapshot of all dashboard entries, time tracking records, and preferences as a single dated JSON file

@@ -8,20 +8,8 @@ Guided introduction to the app covering the data entry workflow, what Flow means
 
 ## Backlog
 
-### Transactions View
-Dedicated full-screen transaction history, separate from the Dashboard panel. Currently a disabled sidebar item.
-
-### Home View
-Live KPI cards pulling from committed data. Spending trend mini-chart. Recent transactions panel. Currently a visual placeholder.
-
 ### HackMD Integration
 Pull document content from the HackMD API. Edit docs collaboratively online, see them reflected in the app automatically without touching code.
-
-### GitHub Pages Variant
-A one-pager version of the app hosted on GitHub Pages, with per-user appearance customisation.
-
-### Gamification
-Achievement system to encourage consistent tracking. Milestones unlock features or surface insights — for example, three months of data unlocks forecasting confidence indicators.
 
 ### PDF: Financial Report Export
 One-click budget report covering a selected period: income, expenses, savings breakdown, and a forecast snapshot.
@@ -39,6 +27,12 @@ Ability to make custom widgets/sections (board constructor?).
 Ability to use agentic LLM via API key.
 
 ## Done
+
+### Home View
+Live KPI cards pulling from committed data. Spending trend mini-chart. Recent transactions panel. Currently a visual placeholder.
+
+### GitHub Pages Variant
+A one-pager version of the app hosted on GitHub Pages, with per-user appearance customisation.
 
 ### Calendar Manual Sync (Import/Export)
 An option for sharing data across devices in case local storage is cleaned on browser exit.
