@@ -80,19 +80,32 @@ body {
     overflow-y: auto;
     background-color: var(--app-bg);
     padding: 20px;
+    position: relative;
 }
 
-/* ── Loading overlay ── */
-#app-loader {
-    transition: opacity 0.4s ease;
-}
-
+/* ── View loader ── */
 @keyframes loader-spin {
     to { transform: rotate(360deg); }
 }
 
-#loader-ring {
+.loader-ring {
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
     animation: loader-spin 0.75s linear infinite;
+}
+
+.view-loader-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--app-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: opacity 0.3s ease;
 }
 
 /* ── Global scrollbar styling ── */

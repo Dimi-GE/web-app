@@ -1,10 +1,22 @@
+## v0.0.1b — June 2026
+
+- `fix` Loading — per-view spinner replaces the former full-screen overlay; spinner appears inside the content area on first visit to each view and lifts only when the view signals it is fully rendered, preventing content flash across all views
+- `fix` Loading — `window.viewReady()` callback introduced; each view's init function calls it at the natural end of its async work (after charts render, sub-components load, and markdown fetches complete) so the spinner duration is tied to actual content readiness rather than a fixed timeout
+- `fix` Loading — 350ms fallback timeout added to force-remove the overlay when `transitionend` does not fire; prevents the invisible overlay from blocking pointer events on synchronously-initialised views such as Hours Reports
+- `improvement` Loading — load time logged to console per view (`[viewName] ready in Xms`) to aid performance profiling
+- `improvement` Loading — 8-second safety timeout auto-dismisses the spinner if a view's init never signals ready, preventing the overlay from hanging indefinitely
+- `improvement` Hours Reports — view renamed from Time Tracking across all user-facing labels, navigation, view title, changelog, and roadmap entries; internal file paths unchanged
+- `improvement` Hours Reports — Today and This Week sections removed; view now focuses on the monthly calendar and timer only
+- `docs` HOME.md added covering KPI row, reference month logic, Spending Trend, Recent Transactions, Expense Breakdown, and Financial Health panels
+- `docs` HOURS.md added covering Timesheet Settings, Timer, Calendar, Day Entry Modal, and File Operations
+
 ## v0.0.1c.7 — June 2026
 
 - `feature` Settings — Backup All Data action downloads a full snapshot of all dashboard entries, time tracking records, and preferences as a single dated JSON file
 - `feature` Settings — Restore from Backup action reads a backup JSON file and replaces all current data; requires a file-picker confirm step before overwriting
-- `feature` Time Tracking — month total row added below the calendar showing cumulative hours for the displayed month; updates on every render including month navigation
-- `feature` Time Tracking — calendar Export JSON and Import JSON actions for sharing data across devices; export covers all entries and sessions, import does a full replace then re-renders
-- `improvement` Time Tracking — Export JSON, Import JSON, and Export PDF buttons consolidated into a collapsible file-ops panel behind a single toggle button, matching the dashboard pattern and fixing overflow on narrow mobile screens
+- `feature` Hours Reports — month total row added below the calendar showing cumulative hours for the displayed month; updates on every render including month navigation
+- `feature` Hours Reports — calendar Export JSON and Import JSON actions for sharing data across devices; export covers all entries and sessions, import does a full replace then re-renders
+- `improvement` Hours Reports — Export JSON, Import JSON, and Export PDF buttons consolidated into a collapsible file-ops panel behind a single toggle button, matching the dashboard pattern and fixing overflow on narrow mobile screens
 - `improvement` Settings — Backup, Restore, and Reset share a single STORAGE_KEYS array so adding new views keeps all three actions in sync automatically
 - `fix` Mobile — `100dvh` added alongside `100vh` on body, window wrapper, and mobile drawer to correct content clipping caused by browser chrome on iOS Safari and Android
 - `fix` Loading — full-screen overlay with spinner shown on initial page load, fades out after 2 seconds, preventing section-by-section flash of unstyled content on first paint
@@ -38,13 +50,13 @@
 
 ## v0.0.1c.3 — June 2026
 
-- `feature` Time Tracking — Submit button wires timer to the calendar: submitting a session adds hours and task label to today's calendar entry, the Today list, and the This Week bars
-- `feature` Time Tracking — Today sessions rendered as a scrollable list capped at 4 visible entries, wrapped in a surface card
-- `feature` Time Tracking — This Week bars now reflect real data from committed entries, scaling relative to the busiest day
-- `improvement` Time Tracking — Settings and Timer placed side by side in a responsive flex row that stacks on narrow screens
-- `improvement` Time Tracking — Timer counter reduced to 28px; tag dropdown removed as unused
-- `improvement` Time Tracking — Submit button styled with orange border and text; both buttons compacted
-- `improvement` Time Tracking — View no longer capped at 900px; fills the full content frame like other views
+- `feature` Hours Reports — Submit button wires timer to the calendar: submitting a session adds hours and task label to today's calendar entry, the Today list, and the This Week bars
+- `feature` Hours Reports — Today sessions rendered as a scrollable list capped at 4 visible entries, wrapped in a surface card
+- `feature` Hours Reports — This Week bars now reflect real data from committed entries, scaling relative to the busiest day
+- `improvement` Hours Reports — Settings and Timer placed side by side in a responsive flex row that stacks on narrow screens
+- `improvement` Hours Reports — Timer counter reduced to 28px; tag dropdown removed as unused
+- `improvement` Hours Reports — Submit button styled with orange border and text; both buttons compacted
+- `improvement` Hours Reports — View no longer capped at 900px; fills the full content frame like other views
 - `improvement` PDF export — other-month days (overflow weeks) now styled the same as weekends — lighter salmon fill
 - `improvement` PDF export — row height tightened: font reduced to 8.5pt, cell padding halved to 1.5mm
 - `improvement` Analytics — heatmap intensity row made responsive; columns wrap on narrow screens
@@ -55,15 +67,15 @@
 - `improvement` Roadmap category order standardised: Planned → In Progress → Ideas → Done
 - `improvement` Roadmap categories styled with per-status background tint and coloured border
 - `improvement` Roadmap card lists capped at ~4 visible entries with vertical scroll
-- `feature` Time Tracking — monthly timesheet calendar with day-level entry (hours + tasks per day)
-- `feature` Time Tracking — freelancer name and company settings persisted to localStorage
-- `feature` Time Tracking — PDF export via jsPDF generating a weekly timesheet matching the standard spreadsheet format
+- `feature` Hours Reports — monthly timesheet calendar with day-level entry (hours + tasks per day)
+- `feature` Hours Reports — freelancer name and company settings persisted to localStorage
+- `feature` Hours Reports — PDF export via jsPDF generating a weekly timesheet matching the standard spreadsheet format
 - `improvement` PDF timesheet uses Excel-matched salmon fills, violet label column, black grid lines, and grey fill on logged days
 
 ## v0.0.1c.1 — June 2026
 
 - `feature` Forecasting mechanism with 12-month rolling budget year, weighted average projection, and three-value summary cards (to date / projected / year-end)
-- `feature` Roadmap and Time Tracking view shells added to sidebar navigation
+- `feature` Roadmap and Hours Reports view shells added to sidebar navigation
 - `feature` Markdown engine for rendering .md files as styled HTML or structured cards
 - `feature` Roadmap and Changelog views powered by content/roadmap.md and content/changelog.md
 - `fix` Chart.js race condition causing forecasting chart to not render on first Analytics tab load

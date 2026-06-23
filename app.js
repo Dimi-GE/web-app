@@ -53,7 +53,7 @@ function loadView(viewName) {
         return;
     }
 
-    contentContainer.innerHTML = '<div style="text-align:center;padding:50px;color:#fff;">Loading...</div>';
+    contentContainer.innerHTML = '<div style="height:calc(100dvh - var(--header-height) - 40px);display:flex;align-items:center;justify-content:center;"><div class="loader-ring"></div></div>';
 
     fetch(`views/${viewName}/${viewName}.html`)
         .then(response => {
@@ -70,6 +70,23 @@ function loadView(viewName) {
         .then(() => {
             const initFn = `init${capitalize(viewName)}`;
             if (typeof window[initFn] === 'function') {
+                const overlay = document.createElement('div');
+                overlay.className = 'view-loader-overlay';
+                overlay.innerHTML = '<div class="loader-ring"></div>';
+                contentContainer.appendChild(overlay);
+
+                const t0 = performance.now();
+                const safetyTimer = setTimeout(() => window.viewReady?.(), 8000);
+                window.viewReady = () => {
+                    clearTimeout(safetyTimer);
+                    console.log(`[${viewName}] ready in ${Math.round(performance.now() - t0)}ms`);
+                    if (!overlay.isConnected) return;
+                    overlay.style.opacity = '0';
+                    overlay.addEventListener('transitionend', () => overlay.remove(), { once: true });
+                    setTimeout(() => { if (overlay.isConnected) overlay.remove(); }, 350);
+                    window.viewReady = null;
+                };
+
                 loadedViews[viewName].init = window[initFn];
                 window[initFn]();
             }
@@ -115,12 +132,4 @@ function capitalize(str) {
 document.addEventListener('DOMContentLoaded', () => {
     const saved = sessionStorage.getItem('activeView');
     loadView(saved || 'home');
-
-    const loader = document.getElementById('app-loader');
-    if (loader) {
-        setTimeout(() => {
-            loader.style.opacity = '0';
-            loader.addEventListener('transitionend', () => loader.remove(), { once: true });
-        }, 2000);
-    }
 });
